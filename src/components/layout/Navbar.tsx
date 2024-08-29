@@ -6,6 +6,7 @@ import {
 } from '@kinde-oss/kinde-auth-nextjs/components'
 
 import { NavbarLinks } from './NavbarLinks'
+import { UserNav } from './UserNav'
 import { MobileMenu } from './MobileMenu'
 import { Button } from '@/components/ui/button'
 
@@ -27,21 +28,27 @@ export async function Navbar() {
 
 			<div className='flex items-center gap-x-2 ms-auto md:col-span-3'>
 				{user ? (
-					<h1>User is authenticated</h1>
+					<UserNav
+						email={user.email as string}
+						name={user.given_name as string}
+						userImage={
+							user.picture ?? `https://avatar.vercel.sh/${user.given_name}`
+						}
+					/>
 				) : (
 					<div className='flex items-center gap-x-2'>
 						<Button asChild>
 							<LoginLink>Login</LoginLink>
 						</Button>
-						<Button asChild variant='secondary'>
+						<Button variant='secondary' asChild>
 							<RegisterLink>Register</RegisterLink>
 						</Button>
 					</div>
 				)}
-			</div>
 
-			<div className='md:hidden'>
-				<MobileMenu />
+				<div className='md:hidden'>
+					<MobileMenu />
+				</div>
 			</div>
 		</nav>
 	)
