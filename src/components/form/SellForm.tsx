@@ -1,5 +1,6 @@
 'use client'
 
+import { SelectCategory } from '../shared/SelectCategory'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
@@ -26,14 +27,14 @@ export function SellForm() {
 					<Input
 						name='name'
 						type='text'
-						placeholder='Name of your Product'
+						placeholder='Name of your product'
 						required
 						minLength={3}
 					/>
 				</div>
 				<div className='flex flex-col gap-y-2'>
 					<Label>Category</Label>
-					SelectCategory
+					<SelectCategory />
 				</div>
 
 				<div className='flex flex-col gap-y-2'>
@@ -51,7 +52,7 @@ export function SellForm() {
 					<Label>Small Summary</Label>
 					<Textarea
 						name='smallDescription'
-						placeholder='Pleae describe your product shortly right here...'
+						placeholder='Please describe your product shortly right here...'
 						required
 						minLength={10}
 					/>
