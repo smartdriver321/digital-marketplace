@@ -1,13 +1,16 @@
 'use client'
 
+import { UploadDropzone } from '@/lib/uploadthing'
 import { SelectCategory } from '../shared/SelectCategory'
 import { TipTapEditor } from '../shared/Editor'
+import { Submitbutton } from '../shared/SubmitButtons'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import {
 	CardContent,
 	CardDescription,
+	CardFooter,
 	CardHeader,
 	CardTitle,
 } from '@/components/ui/card'
@@ -63,7 +66,21 @@ export function SellForm() {
 					<Label>Description</Label>
 					<TipTapEditor />
 				</div>
+
+				<div className='flex flex-col gap-y-2'>
+					<Label>Product Images</Label>
+					<UploadDropzone endpoint='imageUploader' />
+				</div>
+
+				<div className='flex flex-col gap-y-2'>
+					<Label>Product File</Label>
+					<UploadDropzone endpoint='productFileUpload' />
+				</div>
 			</CardContent>
+
+			<CardFooter className='mt-5'>
+				<Submitbutton title='Create your Product' />
+			</CardFooter>
 		</form>
 	)
 }
