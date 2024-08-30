@@ -17,7 +17,7 @@ export const categoryItems: iAppProps[] = [
 	},
 	{
 		id: 1,
-		name: 'ui-kit',
+		name: 'uikit',
 		title: 'UI Kit',
 		image: <ChefHat />,
 	},
