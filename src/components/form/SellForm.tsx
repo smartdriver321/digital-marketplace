@@ -1,6 +1,7 @@
 'use client'
 
 import { SelectCategory } from '../shared/SelectCategory'
+import { TipTapEditor } from '../shared/Editor'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
@@ -56,6 +57,11 @@ export function SellForm() {
 						required
 						minLength={10}
 					/>
+				</div>
+
+				<div className='flex flex-col gap-y-2'>
+					<Label>Description</Label>
+					<TipTapEditor />
 				</div>
 			</CardContent>
 		</form>

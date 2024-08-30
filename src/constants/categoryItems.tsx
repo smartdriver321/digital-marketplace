@@ -11,20 +11,20 @@ interface iAppProps {
 export const categoryItems: iAppProps[] = [
 	{
 		id: 0,
-		name: 'templates',
-		title: 'Templates',
+		name: 'template',
+		title: 'Template',
 		image: <Globe />,
 	},
 	{
 		id: 1,
-		name: 'ui-kits',
-		title: 'UI Kits',
+		name: 'ui-kit',
+		title: 'UI Kit',
 		image: <ChefHat />,
 	},
 	{
 		id: 2,
-		name: 'icons',
-		title: 'Icons',
+		name: 'icon',
+		title: 'Icon',
 		image: <PartyPopper />,
 	},
 ]
