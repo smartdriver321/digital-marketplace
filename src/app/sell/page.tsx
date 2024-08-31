@@ -24,7 +24,7 @@ async function getData(userId: string) {
 }
 
 export default async function SellPage() {
-	//noStore()
+	noStore()
 	const { getUser } = getKindeServerSession()
 	const user = await getUser()
 

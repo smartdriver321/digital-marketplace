@@ -15,7 +15,7 @@ import {
 } from '@/components/ui/carousel'
 
 async function getData(id: string) {
-	//noStore()
+	noStore()
 	const data = await prisma.product.findUnique({
 		where: {
 			id: id,
