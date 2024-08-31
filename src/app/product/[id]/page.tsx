@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { JSONContent } from '@tiptap/react'
 
+import { buyProduct } from '@/app/actions'
 import prisma from '@/lib/db'
 import { BuyButton } from '@/components/shared/SubmitButtons'
 import { ProductDescription } from '@/components/shared/ProductDescription'
@@ -70,7 +71,7 @@ export default async function ProductIdPage({
 				</h1>
 
 				<p className='mt-2 text-muted-foreground'>{data?.smallDescription}</p>
-				<form action=''>
+				<form action={buyProduct}>
 					<input type='hidden' name='id' value={data?.id} />
 					<BuyButton price={data?.price as number} />
 				</form>
