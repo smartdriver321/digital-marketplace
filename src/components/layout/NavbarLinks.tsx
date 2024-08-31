@@ -14,17 +14,17 @@ export const navbarLinks = [
 	{
 		id: 1,
 		name: 'Templates',
-		href: '/products/templates',
+		href: '/products/template',
 	},
 	{
 		id: 2,
 		name: 'UI Kits',
-		href: '/products/ui-kits',
+		href: '/products/uikit',
 	},
 	{
 		id: 3,
 		name: 'Icons',
-		href: '/products/icons',
+		href: '/products/icon',
 	},
 ]
 
