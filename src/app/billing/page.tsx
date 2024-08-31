@@ -1,8 +1,8 @@
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 
+import { createStripeAccountLink, getStripeDashboardLink } from '../actions'
 import prisma from '@/lib/db'
 import { Submitbutton } from '@/components/shared/SubmitButtons'
-import { createStripeAccountLink } from '../actions'
 import {
 	Card,
 	CardContent,
@@ -50,7 +50,7 @@ export default async function BillingPage() {
 					)}
 
 					{data?.stripeConnectedLinked === true && (
-						<form action=''>
+						<form action={getStripeDashboardLink}>
 							<Submitbutton title='View Dashboard' />
 						</form>
 					)}

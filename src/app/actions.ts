@@ -135,6 +135,11 @@ export async function buyProduct(formData: FormData) {
 			smallDescription: true,
 			price: true,
 			images: true,
+			User: {
+				select: {
+					connectedAccountId: true,
+				},
+			},
 		},
 	})
 
@@ -154,7 +159,12 @@ export async function buyProduct(formData: FormData) {
 				quantity: 1,
 			},
 		],
-
+		payment_intent_data: {
+			application_fee_amount: Math.round((data?.price as number) * 100) * 0.1,
+			transfer_data: {
+				destination: data?.User?.connectedAccountId as string,
+			},
+		},
 		success_url: 'http://localhost:3000/payment/success',
 		cancel_url: 'http://localhost:3000/payment/cancel',
 	})
@@ -188,4 +198,28 @@ export async function createStripeAccountLink() {
 	})
 
 	return redirect(accountLink.url)
+}
+
+export async function getStripeDashboardLink() {
+	const { getUser } = getKindeServerSession()
+	const user = await getUser()
+
+	if (!user) {
+		throw new Error()
+	}
+
+	const data = await prisma.user.findUnique({
+		where: {
+			id: user.id,
+		},
+		select: {
+			connectedAccountId: true,
+		},
+	})
+
+	const loginLink = await stripe.accounts.createLoginLink(
+		data?.connectedAccountId as string
+	)
+
+	return redirect(loginLink.url)
 }
