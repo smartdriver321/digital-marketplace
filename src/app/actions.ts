@@ -168,11 +168,11 @@ export async function buyProduct(formData: FormData) {
 		success_url:
 			process.env.NODE_ENV === 'development'
 				? 'http://localhost:3000/payment/success'
-				: 'https://digital-marketplace-web-ejgtb0fgw-smartdriver321s-projects.vercel.app/payment/success',
+				: 'https://digital-marketplace-web-app.vercel.app/payment/success',
 		cancel_url:
 			process.env.NODE_ENV === 'development'
 				? 'http://localhost:3000/payment/success'
-				: 'https://digital-marketplace-web-ejgtb0fgw-smartdriver321s-projects.vercel.app/payment/cancel',
+				: 'https://digital-marketplace-web-app.vercel.app/payment/cancel',
 	})
 
 	return redirect(session.url as string)
@@ -200,11 +200,11 @@ export async function createStripeAccountLink() {
 		refresh_url:
 			process.env.NODE_ENV === 'development'
 				? `http://localhost:3000/billing`
-				: `https://digital-marketplace-web-ejgtb0fgw-smartdriver321s-projects.vercel.app/billing`,
+				: `https://digital-marketplace-web-app.vercel.app/billing`,
 		return_url:
 			process.env.NODE_ENV === 'development'
 				? `http://localhost:3000/return/${data?.connectedAccountId}`
-				: `https://digital-marketplace-web-ejgtb0fgw-smartdriver321s-projects.vercel.app/return/${data?.connectedAccountId}`,
+				: `https://digital-marketplace-web-app.vercel.app/return/${data?.connectedAccountId}`,
 		type: 'account_onboarding',
 	})
 
