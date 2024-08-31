@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { JSONContent } from '@tiptap/react'
+import { unstable_noStore as noStore } from 'next/cache'
 
 import { buyProduct } from '@/app/actions'
 import prisma from '@/lib/db'
@@ -14,6 +15,7 @@ import {
 } from '@/components/ui/carousel'
 
 async function getData(id: string) {
+	noStore()
 	const data = await prisma.product.findUnique({
 		where: {
 			id: id,

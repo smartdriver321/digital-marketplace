@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation'
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
+import { unstable_noStore as noStore } from 'next/cache'
 
 import prisma from '@/lib/db'
 import { SellForm } from '@/components/form/SellForm'
@@ -23,6 +24,7 @@ async function getData(userId: string) {
 }
 
 export default async function SellPage() {
+	noStore()
 	const { getUser } = getKindeServerSession()
 	const user = await getUser()
 

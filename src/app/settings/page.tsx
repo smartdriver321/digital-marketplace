@@ -1,4 +1,5 @@
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
+import { unstable_noStore as noStore } from 'next/cache'
 
 import prisma from '@/lib/db'
 import { SettingsForm } from '@/components/form/SettingsForm'
@@ -20,6 +21,7 @@ async function getData(userId: string) {
 }
 
 export default async function SettingsPage() {
+	noStore()
 	const { getUser } = getKindeServerSession()
 	const user = await getUser()
 

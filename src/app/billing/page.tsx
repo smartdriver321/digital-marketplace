@@ -1,4 +1,5 @@
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
+import { unstable_noStore as noStore } from 'next/cache'
 
 import { createStripeAccountLink, getStripeDashboardLink } from '../actions'
 import prisma from '@/lib/db'
@@ -25,6 +26,7 @@ async function getData(userId: string) {
 }
 
 export default async function BillingPage() {
+	noStore()
 	const { getUser } = getKindeServerSession()
 	const user = await getUser()
 
