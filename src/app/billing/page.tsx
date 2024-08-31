@@ -26,7 +26,7 @@ async function getData(userId: string) {
 }
 
 export default async function BillingPage() {
-	noStore()
+	//noStore()
 	const { getUser } = getKindeServerSession()
 	const user = await getUser()
 

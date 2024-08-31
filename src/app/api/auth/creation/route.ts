@@ -6,7 +6,7 @@ import prisma from '@/lib/db'
 import { stripe } from '@/lib/stripe'
 
 export async function GET() {
-	noStore()
+	//noStore()
 	const { getUser } = getKindeServerSession()
 	const user = await getUser()
 

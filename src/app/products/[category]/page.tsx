@@ -51,7 +51,7 @@ export default async function CategoryPage({
 }: {
 	params: { category: string }
 }) {
-	noStore()
+	//noStore()
 	const data = await getData(params.category)
 	return (
 		<section className='max-w-7xl mx-auto px-4 md:px-8'>
