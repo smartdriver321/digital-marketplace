@@ -8,7 +8,6 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function POST(req: Request) {
 	const body = await req.text()
-
 	const signature = headers().get('Stripe-Signature') as string
 
 	let event
@@ -17,21 +16,20 @@ export async function POST(req: Request) {
 		event = stripe.webhooks.constructEvent(
 			body,
 			signature,
-			process.env.STRIPE_SECRET_WEBHOOK as string
+			process.env.STRIPE_EMAIL_WEBHOOK_SECRET as string
 		)
 	} catch (error: unknown) {
-		return new Response('webhook error', { status: 400 })
+		return new Response('Webhook error', { status: 400 })
 	}
 
 	switch (event.type) {
 		case 'checkout.session.completed': {
 			const session = event.data.object
-
 			const link = session.metadata?.link
 
 			const { data, error } = await resend.emails.send({
 				from: 'MarshalUI <onboarding@resend.dev>',
-				to: ['your_email'],
+				to: ['tinggaldidisneyland@gmail.com'],
 				subject: 'Your Product from MarshalUI',
 				react: ProductEmail({
 					link: link as string,
@@ -41,7 +39,7 @@ export async function POST(req: Request) {
 			break
 		}
 		default: {
-			console.log('unhandled event')
+			console.log('Unhandled event')
 		}
 	}
 
